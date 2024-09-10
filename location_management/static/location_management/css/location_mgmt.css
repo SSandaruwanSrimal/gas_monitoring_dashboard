@@ -1,0 +1,27 @@
+#add-row-button, #add-row-button-uat {
+    color: #03af03;
+    font-size: 21px;
+    position: relative;
+    top: 13px;
+    left: 0px;
+}
+
+i.fa-solid.fa-trash-can.cursor-pointer.remove-feature {
+    color: #f02d2d;
+    font-size: 20px;
+    padding-left: 10px;
+}
+
+#serviceCenterTable {
+    border-collapse: separate;
+    border-spacing: 12px;
+    margin-left: -10px;
+}
+
+.md\:w-2\/5.cus {
+    width: 50%;
+}
+
+.md\:w-2\/5.cus-select {
+    width: 47.2%;
+}

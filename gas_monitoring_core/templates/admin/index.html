@@ -1,0 +1,125 @@
+{% extends "admin/base_site.html" %}
+{% load i18n static %}
+{% load admin_menu %}
+
+{% block extrastyle %}
+{{ block.super }}
+<!-- <link rel="stylesheet" type="text/css" href="{% static 'admin/css/dashboard.css' %}" /> -->
+<style>
+    .timeline-body {
+        display: grid;
+        grid-template-columns: 90% 10%;
+    }
+</style>
+{% endblock %}
+
+{% block coltype %}colMS{% endblock %}
+
+{% block bodyclass %}{{ block.super }} dashboard{% endblock %}
+{% if not is_popup %}
+{% block breadcrumbs %}
+<div class="row mb-2">
+    <div class="col-sm-4">
+        <h2>{{title}}</h2>
+    </div>
+    <div class="col-sm-8">
+        <ol class="breadcrumb float-sm-right">
+            <li class="breadcrumb-item"><a href="{% url 'admin:index' %}"><i class="fas fa-tachometer-alt"></i> {% trans 'Home' %}</a></li>
+            {% for app in app_list %}
+            <li class="breadcrumb-item active">{{ app.name }}</li>
+            {% endfor %}
+        </ol>
+    </div>
+</div>
+{% endblock %}
+{% endif %}
+
+
+{% block content %}
+<div id="content-main" class="container-fluid">
+    <div class="row">
+
+
+        {% block sidebar %}
+
+        <div class="card card-widget col-md-12">
+            <div class="card-header ">
+                <h2 class="card-title">Clean Redis Cache</h2>
+                <h3 class="card-title"><a href="{{ app.app_url }}" class="nav-link"
+                        title="{% blocktrans with name=app.name %}Models in the {{ name }} application{% endblocktrans %}">{{ app.name }}</a>
+                </h3>
+
+                <div class="card-tools pull-right">
+                    <button type="button" class="btn btn-tool" data-card-widget="collapse"><i class="fa fa-minus"></i>
+                    </button>
+                </div>
+                <!-- /.box-tools -->
+            </div>
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-md-12">
+                        <p></p>
+
+                        <div class="bg-red-100 border border-red-400 text-red-700 px-4 py-3 mb-6 rounded relative" role="alert">
+                          <strong class="font-bold">Attention!</strong>
+                          <span class="block sm:inline">After adding new content, please clear the related cache. Until the cache is cleared, the new content will not take effect on the frontend.</span>
+                        </div>
+
+                        <div class="timeline">
+                            <div>
+                                <i class="fas fa-minus bg-red "></i>
+                                <div class="timeline-item">
+                                    <div class="timeline-body">
+                                        <span class="mini quiet">Notification</span>
+                                        <form method="post" action="{% url 'clear_notification_cache' %}">
+                                            {% csrf_token %}
+                                            <button  id="notification_cache_btn" class="rounded-md bg-red-600 py-2 px-4 border border-transparent text-center text-sm text-white transition-all shadow-md hover:shadow-lg focus:bg-red-700 focus:shadow-none active:bg-red-700 hover:bg-red-700 active:shadow-none disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none ml-2" type="submit">
+                                              Clean
+                                            </button>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                            <div>
+                                <i class="fas fa-minus bg-red "></i>
+                                <div class="timeline-item">
+                                    <div class="timeline-body">
+                                        <span class="mini quiet">District & Service Centers</span>
+                                        <form method="post" action="{% url 'clear_districts_cache' %}">
+                                            {% csrf_token %}
+                                            <button id="district_centers_cache_btn" class="rounded-md bg-red-600 py-2 px-4 border border-transparent text-center text-sm text-white transition-all shadow-md hover:shadow-lg focus:bg-red-700 focus:shadow-none active:bg-red-700 hover:bg-red-700 active:shadow-none disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none ml-2" type="submit">
+                                              Clean
+                                            </button>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div>
+                                <i class="fas fa-minus bg-red "></i>
+                                <div class="timeline-item">
+                                    <div class="timeline-body">
+                                        <span class="mini quiet">Blogs</span>
+                                        <form method="post" action="{% url 'clear_post_cache' %}">
+                                            {% csrf_token %}
+                                            <button id="blog_cache_btn" class="rounded-md bg-red-600 py-2 px-4 border border-transparent text-center text-sm text-white transition-all shadow-md hover:shadow-lg focus:bg-red-700 focus:shadow-none active:bg-red-700 hover:bg-red-700 active:shadow-none disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none ml-2" type="submit">
+                                              Clean
+                                            </button>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+
+        {% endblock %}
+
+    </div>
+</div>
+
+    {% endblock %}

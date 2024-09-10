@@ -1,0 +1,124 @@
+{% extends "admin/base.html" %}
+{% load static %}
+
+{% block stylesheets %}
+{{ block.super }}
+<link rel="stylesheet" type="text/css" href="{% static 'location_management/css/location_mgmt.css' %}">
+<link rel="stylesheet" type="text/css" href="{% static 'css/selectize.bootstrap3.min.css' %}"/>
+{% endblock %}
+
+{% block content %}
+<div class="content-header">
+    <div class="container-fluid">
+        <div class="row mb-2">
+            <div class="col-sm-6 cus-heading">
+                <div class="d-flex align-items-center">
+                    <h1 class="text-5xl font-extrabold dark:text-white">
+                        <small class="font-semibold text-gray-500 dark:text-gray-400">
+                            Manage Locations
+                        </small>
+                    </h1>
+                </div>
+            </div>
+            <div class="breadcrumb-div">
+                <nav aria-label="breadcrumb">
+                    <ol class="breadcrumb float-sm-right">
+                        {% for breadcrumb in breadcrumbs %}
+                        {% if not forloop.last %}
+                        <li class="breadcrumb-item">
+                            <a href="{{ breadcrumb.url }}">{{ breadcrumb.name }}</a>
+                        </li>
+                        {% else %}
+                        <li class="breadcrumb-item active" aria-current="page">{{ breadcrumb.name }}</li>
+                        {% endif %}
+                        {% endfor %}
+                    </ol>
+                </nav>
+            </div>
+            <div class="action-buttons">
+                <a href="" id="save_center" class="back-button view">Save</a>
+                <a href="" id="backButton" class="back-button view">Back</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="content">
+    <div class="container-fluid">
+        <div class="row justify-left">
+            <div class="col-lg-12">
+                <div class="card mt-6">
+                    <div class="card-body">
+                        <section class="w-full lg:w-4/5">
+                            <div id="section2" class="p-8 mt-6 lg:mt-0 rounded bg-white">
+                                <div id="loader" class="loader"></div>
+                                <form method="post" action="{% url 'manage_service_centers' %}" id="addServiceCenterForm">
+                                    {% csrf_token %}
+                                    <div class="md:flex mb-6">
+                                        <div class="md:w-1/6">
+                                            <label class="block text-gray-600 font-bold md:text-left mb-3 md:mb-0 pr-4"
+                                                for="districtSelector">
+                                                District:
+                                            </label>
+                                        </div>
+                                        <div class="md:w-2/5 cus-select">
+                                            <select class="bg-white-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                                                id="districtSelector" name="district">
+                                                <option value="">Select District</option>
+                                                {% for district in all_districts %}
+                                                    <option value="{{ district.pk }}">{{ district.district }}</option>
+                                                {% endfor %}
+                                            </select>
+                                            {% if form.organization.errors %}
+                                            <div class="font-medium text-sm text-red-800">{{ form.organization.errors }}</div>
+                                            {% endif %}
+                                            <span id="organizationError" class="text-red hidden"></span>
+                                        </div>
+                                    </div>
+
+                                    <div class="md:flex mb-6">
+                                        <div class="md:w-1/6">
+                                            <label class="block text-gray-600 font-bold md:text-left mb-3 md:mb-0 pr-4">
+                                                Centers:
+                                            </label>
+                                        </div>
+                                        <div class="md:w-2/5 cus">
+                                            <div class="loader-div">
+                                                <span class="loader-feature"></span>
+                                            </div>
+                                            <table id="serviceCenterTable" border="1">
+                                                <thead>
+                                                    <tr>
+                                                        <th>Code</th>
+                                                        <th>City</th>
+                                                        <th></th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody id="serviceCenterTableBody"></tbody>
+                                            </table>
+                                            <div class="feature-remove-btn hidden">
+                                                <i id="add-row-button" class="fa-solid fa-circle-plus cursor-pointer hidden"
+                                                    title="Add Features"></i>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </section>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block javascript %}
+{{ block.super }}
+<script src="{% static 'location_management/js/location_mgmt.js' %}"></script>
+<script src="{% static 'js/selectize.min.js' %}"></script>
+<script>
+    var csrf_token = '{{ csrf_token }}';
+    var get_service_centers_url = '{{ get_service_centers_url|escapejs }}';
+</script>
+{% endblock %}

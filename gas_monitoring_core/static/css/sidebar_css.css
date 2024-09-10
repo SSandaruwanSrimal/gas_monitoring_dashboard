@@ -1,0 +1,176 @@
+@media (min-width: 992px) {
+  .main-sidebar {
+    width: 332px;
+  }
+}
+
+/* Styles for screens 991px and below */
+@media (max-width: 991px) {
+  .main-sidebar {
+    width: 337px;
+  }
+
+  .sidebar-collapse .main-sidebar {
+    margin-left: -352px;
+  }
+}
+
+
+@media (min-width: 992px) {
+  body:not(.sidebar-mini-md) .content-wrapper {
+    margin-left: 333px;
+  }
+
+  body:not(.sidebar-mini-md) .main-header {
+    margin-left: 325px;
+  }
+
+  body:not(.sidebar-mini-md) .main-footer {
+    margin-left: 325px;
+  }
+
+}
+
+ul.nav.nav-treeview.sub {
+    margin-left: 28px;
+    font-size: 15px;
+}
+.nav-text {
+  display: inline-block;
+  vertical-align: middle;
+}
+
+.main-header .navbar-nav .d-sm-inline-block {
+    display: none !important;
+}
+
+
+.main-header form.form-inline.ml-3 {
+    display: none !important;
+}
+
+.fa-angle-left:before {
+    content: "\f106" !important;
+}
+
+[class*=sidebar-dark-] .nav-sidebar>.nav-item.menu-open-cus>.nav-link {
+    background: #000 !important;
+    color: #1dc4e9;
+}
+
+[class*=sidebar-dark-] .nav-sidebar>.nav-item.active>.nav-link {
+    background: #000 !important;
+    color: #1dc4e9;
+}
+
+li.nav-item.has-treeview.sub-active>.nav-link {
+    background: rgba(255,255,255,.1);
+}
+
+[class*=sidebar-dark-] .nav-treeview>.nav-item>.nav-link:focus {
+    background: none;
+    color: none;
+}
+
+[class*=sidebar-dark-] .nav.nav-treeview>.nav-item>.nav-link.sub-active {
+    background: rgba(255,255,255,.1);
+}
+
+.sidebar-dark-primary .nav-sidebar>.nav-item>.nav-link.active {
+    background: #000 !important;
+    color: #1dc4e9;
+}
+
+.fa-circle:before {
+    font-size: 12px;
+}
+
+@media only screen and (max-width: 675px) {
+  .assigned-box-outer {
+    margin-top: 10px;
+  }
+}
+
+.dashboard {
+    .breadcrumb {
+        display: none !important
+    }
+}
+
+.back-button.view {
+    display: inline-block;
+    padding: 10px 15px;
+    background-color: black;
+    color: #FFF;
+    text-decoration: none;
+    border-radius: 5px;
+}
+
+.add-content-button {
+    display: inline-block;
+    padding: 10px 15px;
+    background-color: black;
+    color: #FFF;
+    text-decoration: none;
+    border-radius: 5px;
+}
+
+.add-content-button:hover {
+    color: #FFF !important;
+    background: #333f54;
+    border-color: #333f54;
+}
+
+.unassigned-box input, .assigned-box input {
+    border-color: #d1d5db !important;
+    border-radius: 5px !important;
+}
+
+.synonyms_field {
+    margin-right: 5px;
+}
+
+.weight_field, .clear_button, .delete_button.added_row {
+    margin-right: 5px;
+}
+
+.synonyms_field.added_row {
+    border-color: #d1d5db !important;
+}
+
+.weight_field.added_row {
+    border-color: #d1d5db !important;
+    width: 3.5rem;
+}
+
+button:focus {
+    outline: none !important;
+}
+
+.back-button.view:hover {
+    background: #333f54;
+    border-color: #333f54;
+    color: #FFF;
+}
+
+@media (min-width: 992px) {
+    .sidebar-mini.sidebar-collapse .main-sidebar:hover {
+        width: 332px;
+    }
+
+    .sidebar-mini.sidebar-collapse .main-sidebar:hover .brand-link {
+        width: 332px;
+    }
+}
+
+[class*=sidebar-dark-] .nav-sidebar>.nav-item>.nav-link:focus{
+    background-color: unset;
+    color: #fff;
+}
+
+[class*=sidebar-dark-] .nav-sidebar>.nav-item.menu-open>.nav-link {
+    background-color: unset;
+}
+.navbar-nav>.user-menu>.dropdown-menu>li.user-header {
+    height: unset;
+}

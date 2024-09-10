@@ -1,0 +1,60 @@
+{% extends 'adminlte/base.html' %}
+{% load static i18n %}
+
+{% block extra_head %}
+{{ block.super }}
+
+{% if LANGUAGE_BIDI %}
+<link rel="stylesheet" type="text/css"
+    href="{% block stylesheet_rtl %}{% static 'admin/css/rtl.css' %}{% endblock %}" />
+{% endif %}
+<link rel="stylesheet" type="text/css" href="{% static 'admin/css/base.css' %}" />
+<link rel="stylesheet" type="text/css" href="{% static 'css/custom.css' %}">
+<link rel="stylesheet" type="text/css" href="{% static 'css/sidebar_css.css' %}">
+<link rel="stylesheet" type="text/css" href="{% static 'css/flowbite.min.css' %}">
+<link rel="stylesheet" type="text/css" href="{% static 'css/tailwind.min.css' %}">
+<link rel="stylesheet" type="text/css" href="{% static 'css/custom-forms.min.css' %}">
+<link rel="stylesheet" type="text/css" href="{% static 'css/datatables.min.css' %}" />
+
+
+<script src="{% static '/js/jquery.js' %}"></script>
+<script src="{% static '/js/flowbite.min.js' %}"></script>
+<script src="{% static '/js/datepicker-full.js' %}"></script>
+<script src="{% static '/js/back-button.js' %}"></script>
+<script src="https://kit.fontawesome.com/c2b328bdb0.js" crossorigin="anonymous"></script>
+
+{% block extrastyle %}{% endblock %}
+{% block extrahead %}{% endblock %}
+{% block blockbots %}
+<meta name="robots" content="NONE,NOARCHIVE" />{% endblock %}
+{% endblock %}
+
+{% block nav_header %}
+{% include 'admin/lib/_main_header.html' %}
+{% endblock %}
+
+{% block nav_sidebar %}
+{% include 'admin/lib/_main_sidebar.html' %}
+{% endblock %}
+
+{% block content_header %}
+<section class="content-header">
+    <div class="container-fluid">
+        {% block breadcrumbs %}
+
+        {% endblock %}
+    </div>
+</section>
+
+{% endblock %}
+
+{% block content_block_wrap %}
+
+    {% block content %}
+        {% block object-tools %}{% endblock %}
+        {{ content }}
+        {% block sidebar %}{% endblock %}
+    {% endblock %}
+
+
+{% endblock %}

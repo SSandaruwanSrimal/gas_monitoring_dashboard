@@ -1,0 +1,41 @@
+{% load adminlte_helpers %}
+{%load static %}
+<aside class="main-sidebar sidebar-dark-primary elevation-4">
+    <!-- Brand Logo -->
+    {% block logo %}
+    <a href="/" class="brand-link">
+        {% block logo_text %}<span class="brand-text font-weight-light"
+                                   style="text-transform: uppercase;">Golden Harvest</span>{% endblock %}
+    </a>
+    {% endblock %}
+    <!-- sidebar: style can be found in sidebar.less -->
+    <div class="sidebar">
+
+
+        {% block form %}{% endblock %}
+
+        <!-- sidebar menu: : style can be found in sidebar.less -->
+        {% block nav_links_ul %}
+        <nav class="mt-2">
+            <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
+                {% block nav_links_outer %}
+
+                {% block nav_links %}
+
+                {% endblock nav_links %}
+
+
+                <li class="nav-item has-treeview {% if '/locations/index' in request.path %}active menu-open menu-open-cus{% endif %}">
+                    <a href="{% url 'manage_service_centers' %}" class="nav-link">
+                        <i class="nav-icon fas fa-location-crosshairs"></i>
+                        <p>Location Management</p>
+                    </a>
+                </li>
+
+                {% endblock nav_links_outer %}
+            </ul>
+        </nav>
+        {% endblock nav_links_ul %}
+    </div>
+    <!-- /.sidebar -->
+</aside>
