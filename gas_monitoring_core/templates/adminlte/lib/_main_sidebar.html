@@ -24,6 +24,32 @@
 
                 {% endblock nav_links %}
 
+                <li class="nav-item has-treeview {% if '/users/index' in request.path or '/users/create' in request.path or '/users/edit' in request.path %}active menu-open menu-open-cus{% endif %}">
+                    <a href="{% url 'all_users' %}" class="nav-link">
+                        <i class="nav-icon fas fa-people-group"></i>
+                        <p>Customer Management</p>
+                        <i class="fas fa-angle-left right"></i>
+                    </a>
+
+                    <ul class="nav nav-treeview sub">
+                        <li class="nav-item">
+                            <a href="{% url 'all_users' %}"
+                               class="nav-link {% if '/users/index' in request.path %}sub-active{% endif %}">
+                                <i class="nav-icon fa-brands fa-searchengin"></i>
+                                All Customers
+                            </a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a href="{% url 'create_user' %}"
+                               class="nav-link {% if '/users/create' in request.path %}sub-active{% endif %}">
+                                <i class="nav-icon fa-brands fa-searchengin"></i>
+                                Create Customer
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+
 
                 <li class="nav-item has-treeview {% if '/locations/index' in request.path %}active menu-open menu-open-cus{% endif %}">
                     <a href="{% url 'manage_service_centers' %}" class="nav-link">

@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'gas_monitoring_core',
     'location_management',
+    'user_management',
 
 ]
 
