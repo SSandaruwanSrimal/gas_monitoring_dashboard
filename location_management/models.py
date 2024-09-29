@@ -27,3 +27,16 @@ class City(models.Model):
 
     class Meta:
         db_table = 'city'
+
+
+class GasUsage(models.Model):
+    _id = models.ObjectIdField(primary_key=True, db_column='_id')
+    username = models.CharField(max_length=50, null=True, blank=True)
+    capacity = models.IntegerField(default=100)
+    is_gas_leak = models.BooleanField(default=True)
+
+    def __str__(self):
+        return self.username
+
+    class Meta:
+        db_table = 'gas_usage'

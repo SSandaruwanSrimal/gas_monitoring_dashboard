@@ -9,7 +9,7 @@ from django.contrib import messages
 from django.urls import reverse
 from django.core.exceptions import PermissionDenied
 
-from location_management.models import City, District
+from location_management.models import City, District, GasUsage
 from user_management.form import CustomersForm
 from user_management.models import Customers
 
@@ -55,6 +55,13 @@ def create(request):
             instance.district_ref = District.objects.get(pk=ObjectId(request.POST.get('district')))
             instance.city_ref = City.objects.get(district_ref_id=ObjectId(request.POST.get('district')))
             instance.save()
+
+            GasUsage.objects.create(
+                username=request.POST.get('username'),
+                capacity=100,
+                is_gas_leak=False
+            )
+
             messages.success(request, 'Customers registered successfully!')
             return redirect(reverse('all_users'))
         else:
