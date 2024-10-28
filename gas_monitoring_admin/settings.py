@@ -83,8 +83,12 @@ WSGI_APPLICATION = 'gas_monitoring_admin.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'djongo',
-        'ENFORCE_SCHEMA': True,
-        'NAME': 'gas_monitoring'
+        'NAME': 'gas_monitoring_dashboard',
+        'ENFORCE_SCHEMA': False,
+        'CLIENT': {
+              'host': 'mongodb+srv://root:fSDw5XzP4NI0xIxo@cluster0.4nl3k.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0'
+
+        }
     }
 }
 
