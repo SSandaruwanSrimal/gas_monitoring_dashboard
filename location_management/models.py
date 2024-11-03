@@ -5,6 +5,7 @@ from django.utils import timezone
 class District(models.Model):
     _id = models.ObjectIdField(primary_key=True, db_column='_id')
     district = models.CharField(max_length=50, unique=True)
+    district_code = models.CharField(max_length=50, blank=True, null=True)
     created_at = models.DateTimeField(default=timezone.now, editable=False, null=True, blank=True)
     updated_at = models.DateTimeField(default=timezone.now, editable=True, null=True, blank=True)
 
@@ -32,6 +33,8 @@ class City(models.Model):
 class GasUsage(models.Model):
     _id = models.ObjectIdField(primary_key=True, db_column='_id')
     username = models.CharField(max_length=50, null=True, blank=True)
+    district_code = models.CharField(max_length=50, blank=True, null=True)
+    city_code = models.CharField(max_length=50, blank=True, null=True)
     capacity = models.IntegerField(default=100)
     is_gas_leak = models.BooleanField(default=True)
 

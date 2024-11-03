@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     'gas_monitoring_core',
     'location_management',
     'user_management',
+    'usage_summary'
 
 ]
 
@@ -83,7 +84,7 @@ WSGI_APPLICATION = 'gas_monitoring_admin.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'djongo',
-        'NAME': 'gas_monitoring_dashboard',
+        'NAME': 'gas_monitoring_admin',
         'ENFORCE_SCHEMA': False,
         'CLIENT': {
               'host': 'mongodb+srv://root:fSDw5XzP4NI0xIxo@cluster0.4nl3k.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0'

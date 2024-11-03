@@ -125,7 +125,7 @@ function loadServiceCenters(selectedDistrict) {
                     .attr('value', center.city)
                     .text(center.city);
 
-                if (center.name === selected_center) {
+                if (center.city === selected_center) {
                     option.attr('selected', 'selected');
                 }
                 $serviceCenterSelect.append(option);

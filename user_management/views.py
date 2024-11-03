@@ -56,9 +56,16 @@ def create(request):
             instance.city_ref = City.objects.get(district_ref_id=ObjectId(request.POST.get('district')))
             instance.save()
 
+            city_code = ''
+            for city_data in City.objects.get(district_ref_id=ObjectId(request.POST.get('district'))).cites:
+                if city_data['city'] == request.POST.get('city'):
+                    city_code = city_data['code']
+
             GasUsage.objects.create(
                 username=request.POST.get('username'),
                 capacity=100,
+                city_code=city_code,
+                district_code=District.objects.get(pk=ObjectId(request.POST.get('district'))).district_code,
                 is_gas_leak=False
             )
 
@@ -85,7 +92,7 @@ def edit(request, farmer_id):
         'all_districts': District.objects.all(),
         'user_form': user_form,
         'selected_district': '',
-        'selected_center': '',
+        'selected_center': farmer_data.city,
         'farmer_data': farmer_data
     }
 

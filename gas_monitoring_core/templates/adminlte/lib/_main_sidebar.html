@@ -5,7 +5,7 @@
     {% block logo %}
     <a href="/" class="brand-link">
         {% block logo_text %}<span class="brand-text font-weight-light"
-                                   style="text-transform: uppercase;">GAS MONITORING</span>{% endblock %}
+                                   style="text-transform: uppercase;">Usage Monitoring</span>{% endblock %}
     </a>
     {% endblock %}
     <!-- sidebar: style can be found in sidebar.less -->
@@ -55,6 +55,13 @@
                     <a href="{% url 'manage_service_centers' %}" class="nav-link">
                         <i class="nav-icon fas fa-location-crosshairs"></i>
                         <p>Location Management</p>
+                    </a>
+                </li>
+
+                <li class="nav-item has-treeview {% if '/summary/index' in request.path %}active menu-open menu-open-cus{% endif %}">
+                    <a href="{% url 'all_summary' %}" class="nav-link">
+                        <i class="nav-icon fas fa-chart-simple"></i>
+                        <p>Usage Summary</p>
                     </a>
                 </li>
 
