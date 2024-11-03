@@ -127,6 +127,6 @@ ADMINLTE2_THEME = 'skin-blue'
 
 STATIC_URL = '/staticfiles/'
 MEDIA_URL = '/media/'
-MEDIA_ROOT = '/var/www/html/gas_monitoring_admin/media'
+MEDIA_ROOT = '/var/www/html/gas_monitoring_dashboard/media'
 
-STATIC_ROOT = '/var/www/html/gas_monitoring_admin/staticfiles'
+STATIC_ROOT = '/var/www/html/gas_monitoring_dashboard/staticfiles'
