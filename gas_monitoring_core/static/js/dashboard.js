@@ -96,6 +96,14 @@ function handleDistrictClick(event) {
                 </div>
             `);
 
+
+            if (result.length === 0) {
+            chartContainer.append('<div class="no-data-message" style="text-align: center; margin-top: 20px;">No data for this selected district.</div>');
+            $('#loader').hide();
+            $('#sidebar-overlay').hide();
+            return; // Exit the function if there are no results
+        }
+
             // Iterate over results to create bar charts
             result.forEach(item => {
                 const cityName = item.city;
