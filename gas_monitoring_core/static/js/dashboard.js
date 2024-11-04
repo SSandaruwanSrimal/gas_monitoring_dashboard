@@ -89,7 +89,7 @@ function handleDistrictClick(event) {
 
             // Create legend
             chartContainer.append(`
-                <div style="text-align: center; margin-bottom: 15px;"><h2 id="char-title" style="font-size: xx-large !important;">${response.title}</h2><a href="/summary/index" style="color: blue;">see more</a></div>
+                <div style="text-align: center; margin-bottom: 15px;"><h2 id="char-title" style="font-size: xx-large !important;">${response.title}</h2></div>
                 <div class="legend">
                     <span class="first-pref">Low(Below to 10% Capacity)</span>
                     <span class="next-pref">High(100% Capacity)</span>
