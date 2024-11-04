@@ -17,14 +17,14 @@ def index(request):
     all_usage = GasUsage.objects.all()
 
     for item in all_usage:
-
-        district_ref = District.objects.get(pk=Customers.objects.get(username=item.username).district_ref_id)
+        cleaned_username = item.username.replace(" ","")
+        district_ref = District.objects.get(pk=Customers.objects.get(username=cleaned_username).district_ref_id)
 
         results.append({
 
-            'first_name': Customers.objects.get(username=item.username).first_name,
-            'last_name': Customers.objects.get(username=item.username).last_name,
-            'district': District.objects.get(pk=Customers.objects.get(username=item.username).district_ref_id).district,
+            'first_name': Customers.objects.get(username=cleaned_username).first_name,
+            'last_name': Customers.objects.get(username=cleaned_username).last_name,
+            'district': District.objects.get(pk=Customers.objects.get(username=cleaned_username).district_ref_id).district,
             'city': get_city_name(item, district_ref),
             'percentage': item.capacity,
         })
